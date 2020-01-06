@@ -1,0 +1,27 @@
+body {
+  font-family: arial, sans-serif;
+}
+.section-center {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  margin: 30px;
+}
+
+.button--rock {
+  background-color: yellowgreen;
+  border-color: yellowgreen;
+}
+.button--scissors {
+  background-color: royalblue;
+  border-color: royalblue;
+}
+.button--paper {
+  background-color: darkcyan;
+  border-color: darkcyan;
+}
