@@ -1,16 +1,7 @@
 const COMP_WINS = 0;
 const USER_WINS = 1;
-
-const computerSelection = computerPlay();
-console.log(computerSelection);
-const buttons = document.querySelector(".js-buttons-container"); //selected parent container
-buttons.addEventListener("click", choosePlayer); // adds listener on each clicked button
-
-function choosePlayer(e) {
-  const playerSelection = e.target.value;
-  console.log(playerSelection);
-  playRound(playerSelection, computerSelection);
-}
+let computerScore = 0;
+let playerScore = 0;
 
 function computerPlay() {
   let wordCode = Math.floor(Math.random() * 3); // returns a random integer between 0 and 2
@@ -26,6 +17,7 @@ function computerPlay() {
       break;
   }
 }
+
 function playRound(playerSelection, computerSelection) {
   if (
     (computerSelection === "paper" && playerSelection === "rock") ||
@@ -45,3 +37,28 @@ function playRound(playerSelection, computerSelection) {
     console.log("It's a tie!");
   }
 }
+
+function game(n) {
+  for (let i = 0; i < n; i++) {
+    const promptPlayer = prompt("Rock, paper, scissors?");
+    const playerSelection = promptPlayer.toLowerCase();
+    const computerSelection = computerPlay();
+    const resultRound = playRound(playerSelection, computerSelection);
+    if (resultRound === COMP_WINS) {
+      computerScore++;
+      console.log(computerScore);
+    } else if (resultRound === USER_WINS) {
+      playerScore++;
+      console.log(playerScore);
+    }
+  }
+  if (computerScore > playerScore) {
+    console.log("Computer won the game!");
+  } else if (computerScore < playerScore) {
+    console.log("Player won the game!");
+  } else {
+    console.log("No winner this time!");
+  }
+}
+
+game(5);
