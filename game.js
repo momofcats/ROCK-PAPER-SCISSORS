@@ -1,14 +1,19 @@
 const COMP_WINS = 0;
 const USER_WINS = 1;
 
-const computerSelection = computerPlay();
-console.log(computerSelection);
+let bodyElement = document.querySelector("body");
+let resultsDiv = document.createElement("div"); //to display player and computer selection and round score
+
+bodyElement.appendChild(resultsDiv); // appended div to document
 const buttons = document.querySelector(".js-buttons-container"); //selected parent container
 buttons.addEventListener("click", choosePlayer); // adds listener on each clicked button
 
 function choosePlayer(e) {
   const playerSelection = e.target.value;
-  console.log(playerSelection);
+  let playerChoice = document.createElement("h4");
+  playerChoice.textContent = "You: " + playerSelection;
+  resultsDiv.appendChild(playerChoice);
+  let computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
 }
 
@@ -27,21 +32,27 @@ function computerPlay() {
   }
 }
 function playRound(playerSelection, computerSelection) {
+  let computerChoice = document.createElement("h4"); //created h4 inside of div
+
+  computerChoice.textContent = "Computer: " + computerSelection; // put text inside h4
+  resultsDiv.appendChild(computerChoice); //appended computer selection to a div
+  let roundScore = document.createElement("h4");
+  resultsDiv.appendChild(roundScore);
   if (
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper") ||
     (computerSelection === "rock" && playerSelection === "scissors")
   ) {
-    console.log("You lost the round!");
+    roundScore.textContent = "You lost the round!";
     return COMP_WINS;
   } else if (
     (computerSelection === "scissors" && playerSelection === "rock") ||
     (computerSelection === "rock" && playerSelection === "paper") ||
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
-    console.log("You won the round!");
+    roundScore.textContent = "You won the round!";
     return USER_WINS;
   } else {
-    console.log("It's a tie!");
+    roundScore.textContent = "It's a tie!";
   }
 }
