@@ -2,11 +2,7 @@ const COMP_WINS = 0;
 const USER_WINS = 1;
 
 let bodyElement = document.querySelector("body");
-let resultsDiv = document.createElement("div"); //created div
-let computerChoice = document.createElement("h4"); //created h4 inside of div
-let computerSelection = computerPlay();
-computerChoice.textContent = "Computer: " + computerSelection; // put text inside h4
-resultsDiv.appendChild(computerChoice); //appended computer selection to a div
+let resultsDiv = document.createElement("div"); //to display player and computer selection and round score
 
 bodyElement.appendChild(resultsDiv); // appended div to document
 const buttons = document.querySelector(".js-buttons-container"); //selected parent container
@@ -16,7 +12,8 @@ function choosePlayer(e) {
   const playerSelection = e.target.value;
   let playerChoice = document.createElement("h4");
   playerChoice.textContent = "You: " + playerSelection;
-  resultsDiv.appendChild(playerChoice); // add to div result of player selection
+  resultsDiv.appendChild(playerChoice);
+  let computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
 }
 
@@ -35,6 +32,10 @@ function computerPlay() {
   }
 }
 function playRound(playerSelection, computerSelection) {
+  let computerChoice = document.createElement("h4"); //created h4 inside of div
+
+  computerChoice.textContent = "Computer: " + computerSelection; // put text inside h4
+  resultsDiv.appendChild(computerChoice); //appended computer selection to a div
   let roundScore = document.createElement("h4");
   resultsDiv.appendChild(roundScore);
   if (
