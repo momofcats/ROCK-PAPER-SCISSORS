@@ -1,24 +1,23 @@
 const COMP_WINS = 0;
 const USER_WINS = 1;
-
+let computerScore = 0;
+let playerScore = 0;
 let bodyElement = document.querySelector("body");
-let resultsDiv = document.createElement("div"); //to display player and computer selection and round score
+let resultsDiv = document.createElement("div");
 
-bodyElement.appendChild(resultsDiv); // appended div to document
-const buttons = document.querySelector(".js-buttons-container"); //selected parent container
-buttons.addEventListener("click", choosePlayer); // adds listener on each clicked button
+bodyElement.appendChild(resultsDiv);
+game();
 
 function choosePlayer(e) {
-  const playerSelection = e.target.value;
+  playerSelection = e.target.value;
   let playerChoice = document.createElement("h4");
-  playerChoice.textContent = "You: " + playerSelection;
+  playerChoice.textContent = "You: " + player;
   resultsDiv.appendChild(playerChoice);
-  let computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
+  return playerSelection;
 }
 
 function computerPlay() {
-  let wordCode = Math.floor(Math.random() * 3); // returns a random integer between 0 and 2
+  let wordCode = Math.floor(Math.random() * 3);
   switch (wordCode) {
     case 0:
       return "rock";
@@ -32,10 +31,10 @@ function computerPlay() {
   }
 }
 function playRound(playerSelection, computerSelection) {
-  let computerChoice = document.createElement("h4"); //created h4 inside of div
+  let computerChoice = document.createElement("h4");
 
-  computerChoice.textContent = "Computer: " + computerSelection; // put text inside h4
-  resultsDiv.appendChild(computerChoice); //appended computer selection to a div
+  computerChoice.textContent = "Computer: " + computerSelection;
+  resultsDiv.appendChild(computerChoice);
   let roundScore = document.createElement("h4");
   resultsDiv.appendChild(roundScore);
   if (
@@ -54,5 +53,26 @@ function playRound(playerSelection, computerSelection) {
     return USER_WINS;
   } else {
     roundScore.textContent = "It's a tie!";
+  }
+}
+function game() {
+  while (computerScore !== 5 || playerScore !== 5) {
+    const buttons = document.querySelector(".js-buttons-container");
+    buttons.addEventListener("click", choosePlayer);
+    const resultRound = playRound(computerPlay(), chosePlayer());
+    if (resultRound === COMP_WINS) {
+      computerScore++;
+      console.log(computerScore);
+    } else if (resultRound === USER_WINS) {
+      playerScore++;
+      console.log(playerScore);
+    }
+  }
+  if (computerScore > playerScore) {
+    console.log("Computer won the game!");
+  } else if (computerScore < playerScore) {
+    console.log("Player won the game!");
+  } else {
+    console.log("No winner this time!");
   }
 }
