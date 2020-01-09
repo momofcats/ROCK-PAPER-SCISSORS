@@ -1,24 +1,11 @@
-const COMP_WINS = 0;
-const USER_WINS = 1;
+let playerScore = 0;
+let computerScore = 0;
 
-let bodyElement = document.querySelector("body");
-let resultsDiv = document.createElement("div"); //to display player and computer selection and round score
-
-bodyElement.appendChild(resultsDiv); // appended div to document
-const buttons = document.querySelector(".js-buttons-container"); //selected parent container
-buttons.addEventListener("click", choosePlayer); // adds listener on each clicked button
-
-function choosePlayer(e) {
-  const playerSelection = e.target.value;
-  let playerChoice = document.createElement("h4");
-  playerChoice.textContent = "You: " + playerSelection;
-  resultsDiv.appendChild(playerChoice);
-  let computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-}
+const buttons = document.querySelector(".js-buttons-container");
+buttons.addEventListener("click", playRound);
 
 function computerPlay() {
-  let wordCode = Math.floor(Math.random() * 3); // returns a random integer between 0 and 2
+  let wordCode = Math.floor(Math.random() * 3);
   switch (wordCode) {
     case 0:
       return "rock";
@@ -31,28 +18,50 @@ function computerPlay() {
       break;
   }
 }
-function playRound(playerSelection, computerSelection) {
-  let computerChoice = document.createElement("h4"); //created h4 inside of div
-
-  computerChoice.textContent = "Computer: " + computerSelection; // put text inside h4
-  resultsDiv.appendChild(computerChoice); //appended computer selection to a div
-  let roundScore = document.createElement("h4");
-  resultsDiv.appendChild(roundScore);
+function playRound(e) {
+  let playerSelection = e.target.value;
+  let computerSelection = computerPlay();
+  console.log("you: " + playerSelection);
+  console.log("computer: " + computerSelection);
   if (
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper") ||
     (computerSelection === "rock" && playerSelection === "scissors")
   ) {
-    roundScore.textContent = "You lost the round!";
-    return COMP_WINS;
+    console.log("You lost the round!");
+    computerScore++;
   } else if (
     (computerSelection === "scissors" && playerSelection === "rock") ||
     (computerSelection === "rock" && playerSelection === "paper") ||
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
-    roundScore.textContent = "You won the round!";
-    return USER_WINS;
+    console.log("You won the round!");
+    playerScore++;
   } else {
-    roundScore.textContent = "It's a tie!";
+    console.log("It's a tie!");
+  }
+
+  console.log("player score: " + playerScore);
+  console.log("computer score: " + computerScore);
+  game(computerScore, playerScore);
+}
+
+function game(computerScore, playerScore) {
+  if (computerScore === 5 || playerScore === 5) {
+    if (computerScore > playerScore) {
+      console.log("Computer won the game!");
+    } else if (playerScore > computerScore) {
+      console.log("Player won the game!");
+    } else {
+      console.log("It's a tie!");
+    }
+    disableButtons();
+  }
+}
+
+function disableButtons() {
+  const button = document.querySelectorAll(".js-button");
+  for (i = 0; i < button.length; i++) {
+    button[i].disabled = true;
   }
 }
