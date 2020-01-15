@@ -10,25 +10,30 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <header class="section-center">
+      <h1>Rock, paper or scissors?</h1>
+    </header class="section-center">
     <div class="buttons section-center js-buttons-container">
-      <button type="button" value="rock" class="button button--rock js-button">
-        rock
-      </button>
-      <button
-        type="button"
-        value="paper"
+      <input
+        type="image"
+        class="button button--rock js-button"
+        src="pictures/rock.png"
+        alt="rock"
+      />
+      <input
+        type="image"
         class="button button--paper js-button"
-      >
-        paper
-      </button>
-      <button
-        type="button"
-        value="scissors"
+        src="pictures/paper.png"
+        alt="paper"
+      />
+      <input
+        type="image"
+        alt="scissors"
+        src="pictures/scissors.png"
         class="button button--scissors js-button"
-      >
-        scissors
-      </button>
+      />
     </div>
+    
     <div class="js-text_container">
       <p class="js-player_choice"></p>
       <p class="js-computer_choice"></p>

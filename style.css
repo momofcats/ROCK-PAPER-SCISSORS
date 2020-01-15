@@ -6,22 +6,20 @@ body {
   text-align: center;
   margin-top: 100px;
 }
-
 .button {
   padding: 10px;
-  border-radius: 6px;
   margin: 30px;
+  width: 150px;
+  border-radius: 50%;
+  outline: none;
+  -webkit-transition: width 250ms;
+  transition: all 250ms ease-in-out;
+  border: 10px solid transparent;
+}
+.button:hover {
+  transform: scale(1.3);
 }
 
-.button--rock {
-  background-color: yellowgreen;
-  border-color: yellowgreen;
-}
-.button--scissors {
-  background-color: royalblue;
-  border-color: royalblue;
-}
-.button--paper {
-  background-color: darkcyan;
-  border-color: darkcyan;
+.button--selected {
+  border: 10px solid royalblue;
 }
