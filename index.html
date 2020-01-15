@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <header class="section-center">
-      <h1>Rock, paper or scissors?</h1>
+    <header>
+      <h1 class="section-center">Rock, paper or scissors?</h1>
     </header class="section-center">
-    <div class="buttons section-center js-buttons-container">
+    <div class="buttons-container section-center js-buttons-container">
       <input
         type="image"
         class="button button--rock js-button"
@@ -33,14 +33,11 @@
         class="button button--scissors js-button"
       />
     </div>
-    
-    <div class="js-text_container">
-      <p class="js-player_choice"></p>
-      <p class="js-computer_choice"></p>
-      <p class="js-computer_score"></p>
-      <p class="js-player_score"></p>
-      <p class="js-game_result"></p>
-    </div>
+      <div class="js-player_choice"></div>
+      <div class="js-computer_choice"></div>
+      <div class="js-computer_score"></div>
+      <div class="js-player_score"></div>
+      <div class="js-game_result game-result section-center"></div>
     <script src="game.js"></script>
   </body>
 </html>
