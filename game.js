@@ -2,15 +2,26 @@
   let playerScore = 0;
   let computerScore = 0;
 
-  let bodyElement = document.querySelector("body");
   const playerChoice = document.querySelector(".js-player_choice");
   const computerChoice = document.querySelector(".js-computer_choice");
   const compScore = document.querySelector(".js-computer_score");
   const yourScore = document.querySelector(".js-player_score");
   const gameOvermessage = document.querySelector(".js-game_result");
 
-  const buttons = document.querySelector(".js-buttons-container");
-  buttons.addEventListener("click", playRound);
+  const buttonsContainer = document.querySelector(".js-buttons-container");
+  const buttons = document.querySelectorAll(".js-button");
+
+  buttonsContainer.addEventListener("click", function(e) {
+    const el = e.target;
+    if (!el.classList.contains("js-button")) {
+      return;
+    }
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("button--selected");
+    }
+    el.classList.add("button--selected");
+    playRound(el.alt);
+  });
 
   function computerPlay() {
     let wordCode = Math.floor(Math.random() * 3);
@@ -26,8 +37,8 @@
         break;
     }
   }
-  function playRound(e) {
-    let playerSelection = e.target.value;
+  function playRound(selected) {
+    let playerSelection = selected;
     let computerSelection = computerPlay();
     showSelectons(playerSelection, computerSelection);
     if (
@@ -45,8 +56,6 @@
     }
     compScore.textContent = "computer score: " + computerScore;
     yourScore.textContent = "player score: " + playerScore;
-    //resultsContainer.appendChild(compScore);
-    //resultsContainer.appendChild(yourScore);
     game(computerScore, playerScore);
   }
 
@@ -59,7 +68,7 @@
       } else {
         gameOvermessage.textContent = "It's a tie!";
       }
-      resultsContainer.appendChild(gameOvermessage);
+
       disableButtons();
     }
   }
@@ -74,7 +83,5 @@
   function showSelectons(playerSelection, computerSelection) {
     playerChoice.textContent = "player: " + playerSelection;
     computerChoice.textContent = "computer: " + computerSelection;
-    //resultsContainer.appendChild(computerChoice);
-    //resultsContainer.appendChild(playerChoice);
   }
 })();
