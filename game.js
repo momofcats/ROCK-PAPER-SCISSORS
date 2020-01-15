@@ -69,14 +69,14 @@
         gameOvermessage.textContent = "It's a tie!";
       }
 
-      disableButtons();
+      removeButtons();
     }
   }
 
-  function disableButtons() {
+  function removeButtons() {
     const button = document.querySelectorAll(".js-button");
     for (i = 0; i < button.length; i++) {
-      button[i].disabled = true;
+      button[i].remove();
     }
   }
 

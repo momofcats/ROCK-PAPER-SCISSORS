@@ -4,6 +4,9 @@ body {
 }
 .section-center {
   text-align: center;
+  /*margin-top: 100px;*/
+}
+.buttons-container {
   margin-top: 100px;
 }
 .button {
@@ -21,5 +24,10 @@ body {
 }
 
 .button--selected {
-  border: 10px solid royalblue;
+  border: 10px solid gray;
+}
+.game-result {
+  font-size: 63px;
+  color: #423e3e;
+  margin-top: 80px;
 }
