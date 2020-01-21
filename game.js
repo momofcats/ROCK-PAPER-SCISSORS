@@ -54,8 +54,8 @@
     ) {
       playerScore++;
     }
-    compScore.textContent = "computer score: " + computerScore;
-    yourScore.textContent = "player score: " + playerScore;
+    compScore.textContent = computerScore + " :";
+    yourScore.textContent = playerScore;
     game(computerScore, playerScore);
   }
 
@@ -70,6 +70,8 @@
       }
 
       removeButtons();
+      playerChoice.remove();
+      computerChoice.remove();
     }
   }
 
@@ -81,7 +83,7 @@
   }
 
   function showSelectons(playerSelection, computerSelection) {
-    playerChoice.textContent = "player: " + playerSelection;
-    computerChoice.textContent = "computer: " + computerSelection;
+    playerChoice.textContent = "Player: " + playerSelection;
+    computerChoice.textContent = "Computer: " + computerSelection;
   }
 })();

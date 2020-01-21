@@ -8,12 +8,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron&display=swap"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
     <header>
-      <h1 class="section-center">Rock, paper or scissors?</h1>
-    </header class="section-center">
-    <div class="buttons-container section-center js-buttons-container">
+      <h1 class="ut-center">Rock, paper or scissors?</h1>
+    </header>
+    <div class="selections-container">
+      <p class="js-player_choice ut-center"></p>
+      <p class="js-computer_choice ut-center"></p>
+    </div>
+
+    <div class="ut-center js-buttons-container">
       <input
         type="image"
         class="button button--rock js-button"
@@ -33,11 +43,18 @@
         class="button button--scissors js-button"
       />
     </div>
-      <div class="js-player_choice"></div>
-      <div class="js-computer_choice"></div>
-      <div class="js-computer_score"></div>
-      <div class="js-player_score"></div>
-      <div class="js-game_result game-result section-center"></div>
+
+    <div class="score">
+      <p class="score__heading ut-center">Score</p>
+      <p class="score__item">Computer</p>
+      <p class="score__item">Player</p>
+      <div class="ut-center">
+        <p class="js-computer_score score__item score__item--number">0 :</p>
+        <p class="js-player_score score__item score__item--number">0</p>
+      </div>
+    </div>
+
+    <div class="js-game_result game-result ut-center"></div>
     <script src="game.js"></script>
   </body>
 </html>
