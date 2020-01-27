@@ -54,7 +54,7 @@
     ) {
       playerScore++;
     }
-    compScore.textContent = computerScore + " :";
+    compScore.textContent = computerScore;
     yourScore.textContent = playerScore;
     game(computerScore, playerScore);
   }
