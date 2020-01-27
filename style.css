@@ -1,14 +1,17 @@
 body {
-  font-family: arial, sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 16px;
+  background-color: #e4e4e4;
 }
-.section-center {
+.ut-center {
   text-align: center;
-  /*margin-top: 100px;*/
 }
-.buttons-container {
-  margin-top: 100px;
+.selections-container {
+  font-size: 18px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
+
 .button {
   padding: 10px;
   margin: 30px;
@@ -30,4 +33,30 @@ body {
   font-size: 63px;
   color: #423e3e;
   margin-top: 80px;
+}
+.score {
+  background-color: #edeff3;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.score__item {
+  display: inline-block;
+}
+.score__item:nth-child(3) {
+  padding-left: 10px;
+}
+.score__heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #006e80;
+}
+
+.score__item--number {
+  font-size: 24px;
+  color: #006e80;
 }
